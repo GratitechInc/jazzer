@@ -14,6 +14,7 @@
 
 package com.code_intelligence.jazzer.api;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -32,6 +33,7 @@ final public class CannedFuzzedDataProvider implements FuzzedDataProvider {
     ArrayList<Object> recordedReplies;
     try (ByteArrayInputStream byteStream = new ByteArrayInputStream(rawIn)) {
       try (ObjectInputStream objectStream = new ObjectInputStream(byteStream)) {
+        ObjectInputFilters.enableObjectFilterIfUnprotected(objectStream);
         recordedReplies = (ArrayList<Object>) objectStream.readObject();
       }
     } catch (IOException | ClassNotFoundException e) {
