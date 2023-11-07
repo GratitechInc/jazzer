@@ -16,13 +16,14 @@
 
 package com.code_intelligence.jazzer.instrumentor;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class EdgeCoverageTarget {
-  private final Random rnd = new Random();
+  private final Random rnd = new SecureRandom();
 
   @SuppressWarnings("unused")
   public List<Integer> exampleMethod() {
