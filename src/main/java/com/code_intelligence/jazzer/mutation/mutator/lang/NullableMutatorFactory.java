@@ -41,7 +41,7 @@ final class NullableMutatorFactory extends MutatorFactory {
   private static boolean isNotNullAnnotation(Annotation annotation) {
     // There are many NotNull annotations in the wild (including our own) and we want to recognize
     // them all.
-    return annotation.annotationType().getSimpleName().equals("NotNull");
+    return "NotNull".equals(annotation.annotationType().getSimpleName());
   }
 
   @Override

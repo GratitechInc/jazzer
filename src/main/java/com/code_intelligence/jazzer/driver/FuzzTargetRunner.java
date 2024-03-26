@@ -178,7 +178,7 @@ public final class FuzzTargetRunner {
       JazzerInternal.lastFinding = null;
     }
     // Allow skipping invalid inputs in fuzz tests by using e.g. JUnit's assumeTrue.
-    if (finding == null || finding.getClass().getName().equals(OPENTEST4J_TEST_ABORTED_EXCEPTION)) {
+    if (finding == null || OPENTEST4J_TEST_ABORTED_EXCEPTION.equals(finding.getClass().getName())) {
       return LIBFUZZER_CONTINUE;
     }
     if (Opt.hooks) {

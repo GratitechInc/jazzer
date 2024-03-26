@@ -51,7 +51,7 @@ public abstract class ParameterHolder {
 
   private Method getMethod() {
     List<Method> foos = Arrays.stream(this.getClass().getDeclaredMethods())
-                            .filter(method -> method.getName().equals("foo"))
+                            .filter(method -> "foo".equals(method.getName()))
                             .collect(toList());
     require(foos.size() == 1,
         this.getClass().getName() + " must define exactly one function named 'foo'");

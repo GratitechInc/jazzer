@@ -34,7 +34,7 @@ class JunitSpringWebApplication {
   @GetMapping("/buggy-hello")
   public String buggyHello(@RequestParam(required = false, defaultValue = "World") String name)
       throws Error {
-    if (name.equals("error")) {
+    if ("error".equals(name)) {
       throw new Error("Error found!");
     }
     return "Hello " + name;

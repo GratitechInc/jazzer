@@ -145,10 +145,10 @@ class FuzzTestArgumentsProvider implements ArgumentsProvider, AnnotationConsumer
     } catch (URISyntaxException e) {
       throw new IOException("Failed to open inputs resource directory: " + inputsDirUrl, e);
     }
-    if (inputsDirUri.getScheme().equals("file")) {
+    if ("file".equals(inputsDirUri.getScheme())) {
       // The test is executed from class files, which usually happens when run from inside an IDE.
       return walkInputsInPath(Paths.get(inputsDirUri));
-    } else if (inputsDirUri.getScheme().equals("jar")) {
+    } else if ("jar".equals(inputsDirUri.getScheme())) {
       FileSystem jar = FileSystems.newFileSystem(inputsDirUri, new HashMap<>());
       // inputsDirUrl looks like this:
       // file:/tmp/testdata/ExampleFuzzTest_deploy.jar!/com/code_intelligence/jazzer/junit/testdata/ExampleFuzzTestInputs

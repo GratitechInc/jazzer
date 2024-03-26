@@ -104,7 +104,7 @@ public class Zer
 
   private static boolean isSanitizerEnabled(byte sanitizerId) {
     String allDisabledHooks = System.getProperty("jazzer.disabled_hooks");
-    if (allDisabledHooks == null || allDisabledHooks.equals("")) {
+    if (allDisabledHooks == null || "".equals(allDisabledHooks)) {
       return true;
     }
 

@@ -110,7 +110,7 @@ public final class FuzzTarget {
     AccessibleObjectLookup lookup = new AccessibleObjectLookup(targetClass);
     meta = new Meta(targetClass);
 
-    boolean isConstructor = methodName.equals("new");
+    boolean isConstructor = "new".equals(methodName);
     // We filter out inherited methods, which can lead to unexpected results when autofuzzing a
     // method by name without a descriptor. If desired, these can be autofuzzed explicitly by
     // referencing the parent class. If a descriptor is provided, we also allow fuzzing non-public

@@ -130,12 +130,12 @@ public class Replayer {
       return;
     StackTraceElement lowestFrame = t.getStackTrace()[t.getStackTrace().length - 1];
     if (!lowestFrame.getClassName().equals(Replayer.class.getName())
-        || !lowestFrame.getMethodName().equals("main"))
+        || !"main".equals(lowestFrame.getMethodName()))
       return;
     for (int i = t.getStackTrace().length - 1; i >= 0; i--) {
       StackTraceElement frame = t.getStackTrace()[i];
       if (frame.getClassName().equals(fuzzTarget.getName())
-          && frame.getMethodName().equals("fuzzerTestOneInput")) {
+          && "fuzzerTestOneInput".equals(frame.getMethodName())) {
         t.setStackTrace(Arrays.copyOfRange(t.getStackTrace(), 0, i + 1));
         break;
       }

@@ -83,8 +83,8 @@ class Utils {
     String packageName = testClass.getPackage().getName();
     String[] packageSegments = packageName.split("\\.");
     int numSegments = 2;
-    if (packageSegments.length > 2 && packageSegments[0].equals("com")
-        && packageSegments[1].equals("github")) {
+    if (packageSegments.length > 2 && "com".equals(packageSegments[0])
+        && "github".equals(packageSegments[1])) {
       numSegments = 3;
     }
     return Stream.concat(Arrays.stream(packageSegments).limit(numSegments), Stream.of("**"))
@@ -114,6 +114,6 @@ class Utils {
    * Returns true if and only if the value is equal to "true", "1", or "yes" case-insensitively.
    */
   static boolean permissivelyParseBoolean(String value) {
-    return value.equalsIgnoreCase("true") || value.equals("1") || value.equalsIgnoreCase("yes");
+    return "true".equalsIgnoreCase(value) || "1".equals(value) || "yes".equalsIgnoreCase(value);
   }
 }
