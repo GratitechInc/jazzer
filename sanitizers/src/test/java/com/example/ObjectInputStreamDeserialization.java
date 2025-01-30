@@ -14,6 +14,7 @@
 
 package com.example;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -22,6 +23,7 @@ public class ObjectInputStreamDeserialization {
   public static void fuzzerTestOneInput(byte[] data) {
     try {
       ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
+      ObjectInputFilters.enableObjectFilterIfUnprotected(ois);
       ois.readObject().toString();
     } catch (IOException | ClassNotFoundException ignored) {
       // Ignored checked exception.
