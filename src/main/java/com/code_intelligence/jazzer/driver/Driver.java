@@ -68,7 +68,7 @@ public class Driver {
         if (!isAndroid) {
           idSyncFile = Files.createTempFile("jazzer-", "");
         } else {
-          File f = File.createTempFile("jazzer-", "", new File("/data/local/tmp/"));
+          File f = Files.createTempFile(new File("/data/local/tmp/").toPath(), "jazzer-", "").toFile();
           idSyncFile = f.toPath();
         }
 
