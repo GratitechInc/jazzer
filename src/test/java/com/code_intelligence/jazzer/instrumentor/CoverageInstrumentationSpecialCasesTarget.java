@@ -14,23 +14,24 @@
 
 package com.code_intelligence.jazzer.instrumentor;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class CoverageInstrumentationSpecialCasesTarget {
   public ReturnClass newAfterJump() {
-    if (new Random().nextBoolean()) {
+    if (new SecureRandom().nextBoolean()) {
       throw new RuntimeException("");
     }
-    return new ReturnClass(new Random().nextBoolean() ? "foo" : "bar");
+    return new ReturnClass(new SecureRandom().nextBoolean() ? "foo" : "bar");
   }
 
   public int newAndTryCatch() {
-    new Random();
+    new SecureRandom();
     try {
-      new Random();
+      new SecureRandom();
       return 2;
     } catch (RuntimeException e) {
-      new Random();
+      new SecureRandom();
       return 1;
     }
   }
