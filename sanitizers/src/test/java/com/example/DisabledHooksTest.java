@@ -15,6 +15,7 @@
 package com.example;
 
 import com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh;
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Base64;
@@ -43,6 +44,7 @@ public class DisabledHooksTest {
         Base64.getDecoder().decode("rO0ABXNyAAdqYXouWmVyAAAAAAAAACoCAAFCAAlzYW5pdGl6ZXJ4cAEK");
     try {
       ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
+      ObjectInputFilters.enableObjectFilterIfUnprotected(ois);
       System.out.println(ois.readObject());
     } catch (IOException | ClassNotFoundException ignore) {
     }
